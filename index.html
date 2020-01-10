@@ -207,10 +207,16 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2020-01-08 21:38:36 / Modified: 22:29:05" itemprop="dateCreated datePublished" datetime="2020-01-08T21:38:36+08:00">2020-01-08</time>
+              <time title="Created: 2020-01-08 21:38:36" itemprop="dateCreated datePublished" datetime="2020-01-08T21:38:36+08:00">2020-01-08</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-01-10 18:44:52" itemprop="dateModified" datetime="2020-01-10T18:44:52+08:00">2020-01-10</time>
+              </span>
 
           
 
@@ -224,6 +230,7 @@
 
       
           <p>####1、react与vue为什么要在列表组件加key，其作用是什么？<br>    key是给每一个vNode加上唯一标识，更快更准确的拿到oldVNode中对应的vNode节点。<br>    更快：利用key的唯一性生成map对象来获取对应节点，比遍历方式更快。<br>    更准确：使用key了就不会<code>就地复用</code>，所以更准确。<br>    就地复用：如果数据项的顺序被改变，Vue将不会移动DOM元素来匹配数据项的顺序，而是简单的复用此处的每个元素。<br>####2、[‘1’, ‘2’, ‘3’].map(parseInt)<br>       what: [1, NaN, NaN]<br>       why: 查看parseInt()<br>####3、防抖与节流<br>    防抖(debonce)：当连续触发事件时，只有在规定时间内没有再次触发事件，才会执行一次事件处理函数，如果在未达到规定时间再次触发了事件，则重新开始计时<br>                  function debonce(fn, wait) {<br>                    let timer = null;<br>                    return function() {<br>                      clearTimeout(timer);<br>                      timer = setTimeout(() =&gt; {<br>                        fn.call(this, arguments);<br>                      }, wait)<br>                    }<br>                  }<br>    节流(throttle)：连续触发事件时，规定时间内只会执行一次事件处理函数<br>                   function throttle(fn, wait) {<br>                     let canRun = true;<br>                     return function() {<br>                       if(!canRun) return;<br>                       canRun = false;<br>                       setTimeout = (() =&gt; {<br>                         fn.call(this, arguments);<br>                         canRun = true;<br>                       }, wait);<br>                     }<br>                   }</p>
+<p>####4、深度优先遍历(DFS: depthFirstSearch)与广度优先遍历(BFS: breadthFirstSearch)<br>       DFS: 假设图的所有顶点都未被访问，从某一个顶点出发，访问该顶点然后依次访问其相邻顶点直到该相邻顶点的底部，<br>            直到所以顶点都被访问为止，若此时仍有顶点未被访问则选择另一个未被访问的顶点作为起始点继续上述过程。<br>       BFS: 假设图的所有顶点都未被访问，从某一个顶点出发，首先访问该顶点所有相邻顶点，再访问相邻顶点的所有相邻顶点，<br>            直到所有顶点都被访问，若此时仍有顶点未被访问则选择另一个未被访问的顶点作为起始点继续上述过程。</p>
 
       
     </div>
