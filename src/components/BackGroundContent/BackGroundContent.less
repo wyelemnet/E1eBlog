@@ -1,0 +1,43 @@
+.back-content-container {
+  height: 100%;
+  background-image: url('../../assets/images/bg_2020-11-21.jpg');
+  background-size: 100% 100%;
+
+  .content-container {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate3d(-50%, -50%, 0);
+    width: 50%;
+    text-align: center;
+    color: aliceblue;
+
+    h2 {
+      color: aliceblue;
+      font-size: 24px;
+    }
+
+    #sentence {
+      display: block;
+      width: 100%;
+      height: 30px;
+      font-size: 18px;
+      font-family: cursive;
+
+      &::after {
+        content: '|';
+        animation: blink .3s infinite
+      }
+
+      @keyframes blink {
+        from {
+          opacity: 0;
+        }
+
+        to {
+          opacity: 1;
+        }
+      }
+    }
+  }
+}
