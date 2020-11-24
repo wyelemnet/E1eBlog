@@ -3,7 +3,6 @@ import './BackGroundContent.less';
 
 import { typingAnimition } from '../../utils/index';
 import { SENTENCES } from '../../utils/constants';
-import bgImg from '../../assets/images/bg_2020-11-21.jpg';
 
 const BackGroundContent = () => {
   const weekDay = new Date().getDay();
