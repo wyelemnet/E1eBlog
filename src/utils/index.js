@@ -1,6 +1,5 @@
 // 打字效果
 export const typingAnimition = (container, text, index = 0) => {
-  console.log(text);
   if (index < text.length) {
     container.innerHTML += text.charAt(index);
     setTimeout(typingAnimition.bind(this, container, text, ++index), 300);

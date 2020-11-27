@@ -1,0 +1,40 @@
+.wave-bar-container {
+  position: relative;
+  bottom: 80px;
+  width: 100%;
+  height: 80px;
+
+  .wave-bar {
+    position: absolute;
+    width: calc(100% + .5px);
+    height: 100%;
+    background-image: url(../../assets/images/wave-light.png);
+    background-repeat: repeat no-repeat;
+    background-position: 0px bottom;
+    transform-origin: left bottom;
+    background-size: 100% 60px;
+    animation: move_wave 15s linear infinite;
+  }
+
+  .wave-bar1 {
+    left: 0px;
+  }
+
+  .wave-bar2 {
+    left: 100%;
+  }
+}
+
+@keyframes move_wave {
+  0% {
+    transform: translateX(0%) translateZ(0) scaleY(1);
+  }
+
+  50% {
+    transform: translateX(-50%) translateZ(0) scaleY(.9);
+  }
+
+  100% {
+    transform: translateX(-100%) translateZ(0) scaleY(1);
+  }
+}
