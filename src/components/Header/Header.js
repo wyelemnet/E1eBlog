@@ -6,7 +6,7 @@ import MenuComponent from '../Menu/MenuComponent';
 const Header = () => {
   return (
     <>
-      <div className='nav-container'>
+      <div className='header-container'>
         <h2 className='name'>E1e</h2>
         <MenuComponent></MenuComponent>
       </div>

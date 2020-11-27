@@ -1,0 +1,28 @@
+.learning-website-container {
+  padding: 20px;
+
+  & > span {
+    font-weight: 700;
+    font-size: 18px;
+  }
+
+  .learning-website {
+    display: grid;
+    grid-template-columns: 105px auto;
+    line-height: 32px;
+    padding-top: 10px;
+
+    .title {
+      justify-self: center;
+    }
+
+    .website {
+      padding-left: 10px;
+      color: #1DA57A;
+      cursor: pointer;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+  }
+}

@@ -9,14 +9,18 @@
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
     "antd": "^4.8.4",
+    "axios": "^0.21.0",
     "cra-template": "1.1.0",
     "craco-less": "^1.17.0",
+    "eslint-loader": "^4.0.2",
     "less": "^3.12.2",
     "less-loader": "^7.1.0",
+    "prop-types": "^15.7.2",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.0",
+    "styled-components": "^5.2.1",
     "web-vitals": "^0.2.4"
   },
   "scripts": {

@@ -7,7 +7,7 @@ import { SENTENCES } from '../../utils/constants';
 const BackGroundContent = () => {
   const weekDay = new Date().getDay();
   const sentence = SENTENCES[weekDay];
-
+  
   useEffect(() => {
     const sentenceElement = document.getElementById('sentence');
     typingAnimition(sentenceElement, sentence.text);
@@ -18,7 +18,7 @@ const BackGroundContent = () => {
         clearTimeout(i);
       }
     };
-  });
+  }, [sentence]);
 
   return (
     <>

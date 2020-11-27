@@ -9,24 +9,22 @@ import {
 } from '@ant-design/icons';
 
 import './MenuComponent.less';
+import { goOutWebsite } from '../../utils/index';
 
 const MenuComponent = () => {
-  const [current, setCurrent] = useState('home');
   const history = useHistory();
+  const pathname = history.location.pathname;
+  let currentKey = pathname.substring(1);
+  const hasMore = currentKey.indexOf('/');
+  if (hasMore !== -1) {
+    currentKey = currentKey.substring(0, hasMore);
+  }
+  const [current, setCurrent] = useState(currentKey);
   const handleClick = (e) => {
     if (e.key !== 'github') {
       setCurrent(e.key);
-      history.push(e.key);
+      history.push(`/${e.key}`);
     }
-  };
-
-  const goGithub = () => {
-    let aElement = document.createElement('a');
-
-    aElement.setAttribute('href', 'https://github.com/wyelemnet');
-    aElement.setAttribute('target', '_blank');
-    aElement.click();
-    aElement = null;
   };
 
   return (
@@ -46,7 +44,11 @@ const MenuComponent = () => {
         <Menu.Item key='aboutMe' icon={<UserOutlined />}>
           AboutMe
         </Menu.Item>
-        <Menu.Item onClick={goGithub} key='github' icon={<GithubOutlined />}>
+        <Menu.Item
+          onClick={() => goOutWebsite('https://github.com/wyelemnet')}
+          key='github'
+          icon={<GithubOutlined />}
+        >
           Github
         </Menu.Item>
       </Menu>
