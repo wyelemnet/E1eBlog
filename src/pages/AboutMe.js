@@ -1,13 +1,29 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import ReactMarkdown from 'react-markdown';
+import axios from 'axios';
+
+import test from '../assets/md/test.md';
 
 const containerStyle = {
-  paddingTop: 60,
+  padding: '120px',
+  backgroundColor: 'aliceblue',
 };
 
 const AboutMe = () => {
+  const [data, setData] = useState('');
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const res = await axios.get(`http://localhost:3000${test}`);
+      setData(res.data);
+    };
+
+    fetchData();
+  }, []);
+
   return (
     <div style={containerStyle}>
-      <div>有关于我：</div>
+      <ReactMarkdown source={data} escapeHtml={false}></ReactMarkdown>
     </div>
   );
 };
