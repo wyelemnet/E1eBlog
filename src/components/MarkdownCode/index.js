@@ -5,8 +5,7 @@ import axios from 'axios';
 import CodeBlock from '../CodeBlock';
 
 const containerStyle = {
-  padding: '120px',
-  backgroundColor: 'aliceblue',
+  padding: '120px 120px 0px 30%',
 };
 
 const baseUrl = window.location.origin;
