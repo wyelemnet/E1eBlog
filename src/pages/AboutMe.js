@@ -6,10 +6,11 @@ import weChat from '../assets/images/weChat.jpg';
 
 const weChatStyle = {
   marginLeft: '30%',
+  marginTop: '-60px',
   width: '200px',
 };
 
-const AboutMe = (props) => {
+const AboutMe = () => {
   return (
     <>
       <MarkdownCode url={aboutMe}></MarkdownCode>
