@@ -19,7 +19,7 @@ const MenuComponent = () => {
   if (hasMore !== -1) {
     currentKey = currentKey.substring(0, hasMore);
   }
-  const [current, setCurrent] = useState(currentKey);
+  const [current, setCurrent] = useState(currentKey || 'home');
   const handleClick = (e) => {
     if (e.key !== 'github') {
       setCurrent(e.key);
