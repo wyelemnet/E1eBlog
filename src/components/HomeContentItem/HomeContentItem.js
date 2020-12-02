@@ -1,12 +1,15 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 import { Tag } from 'antd';
 import { useHistory } from 'react-router-dom';
 
 import './HomeContentItem.less';
 import { CATEGORY_COLORS } from '../../utils/constants';
+import { UPDATE_MENU_KEY } from '../../reduces/types';
+import { MenuContext } from '../../reduces/contexts';
 
 const HomeContentItem = (props) => {
+  const { dispatch } = useContext(MenuContext);
   const history = useHistory();
   const info = props.info;
   const getTagColor = () => {
@@ -16,6 +19,7 @@ const HomeContentItem = (props) => {
     return categoryColor && categoryColor.color;
   };
   const goArticleDetail = (id) => {
+    dispatch({ type: UPDATE_MENU_KEY, data: 'arcticle' });
     history.push(`/article/${id}`);
   };
 

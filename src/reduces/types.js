@@ -1,0 +1,1 @@
+export const UPDATE_MENU_KEY = 'UPDATE_MENU_KEY';

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { useHistory } from 'react-router-dom';
 import { Menu } from 'antd';
 import {
@@ -10,8 +10,11 @@ import {
 
 import './MenuComponent.less';
 import { goOutWebsite } from '../../utils/index';
+import { MenuContext } from '../../reduces/contexts';
+import { UPDATE_MENU_KEY } from '../../reduces/types';
 
 const MenuComponent = () => {
+  const { menuKey, dispatch } = useContext(MenuContext);
   const history = useHistory();
   const pathname = history.location.pathname;
   let currentKey = pathname.substring(1);
@@ -19,10 +22,11 @@ const MenuComponent = () => {
   if (hasMore !== -1) {
     currentKey = currentKey.substring(0, hasMore);
   }
-  const [current, setCurrent] = useState(currentKey || 'home');
+  dispatch({ type: UPDATE_MENU_KEY, data: currentKey });
+
   const handleClick = (e) => {
     if (e.key !== 'github') {
-      setCurrent(e.key);
+      dispatch({ type: UPDATE_MENU_KEY, data: e.key });
       history.push(`/${e.key}`);
     }
   };
@@ -32,7 +36,7 @@ const MenuComponent = () => {
       <Menu
         className='menu-container'
         onClick={handleClick}
-        selectedKeys={[current]}
+        selectedKeys={[menuKey]}
         mode='horizontal'
       >
         <Menu.Item key='home' icon={<HomeOutlined />}>
