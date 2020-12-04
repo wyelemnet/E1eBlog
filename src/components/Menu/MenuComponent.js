@@ -22,7 +22,7 @@ const MenuComponent = () => {
   if (hasMore !== -1) {
     currentKey = currentKey.substring(0, hasMore);
   }
-  dispatch({ type: UPDATE_MENU_KEY, data: currentKey });
+  dispatch({ type: UPDATE_MENU_KEY, data: currentKey || 'home' });
 
   const handleClick = (e) => {
     if (e.key !== 'github') {
