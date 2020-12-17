@@ -1,5 +1,6 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { useHistory } from 'react-router-dom';
+import { connect } from 'react-redux';
 import { Menu } from 'antd';
 import {
   HomeOutlined,
@@ -10,11 +11,10 @@ import {
 
 import './MenuComponent.less';
 import { goOutWebsite } from '../../utils/index';
-import { MenuContext } from '../../reduces/contexts';
-import { UPDATE_MENU_KEY } from '../../reduces/types';
+import { UPDATE_MENU_KEY } from '../../store/types';
 
-const MenuComponent = () => {
-  const { menuKey, dispatch } = useContext(MenuContext);
+const MenuComponent = ({ state, dispatch }) => {
+  const { menuKey } = state;
   const history = useHistory();
   const pathname = history.location.pathname;
   let currentKey = pathname.substring(1);
@@ -60,4 +60,16 @@ const MenuComponent = () => {
   );
 };
 
-export default MenuComponent;
+const mapStateToProps = (state) => {
+  return {
+    state,
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    dispatch,
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(MenuComponent);
