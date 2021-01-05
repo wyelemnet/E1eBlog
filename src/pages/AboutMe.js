@@ -5,8 +5,7 @@ import MarkdownCode from '../components/MarkdownCode';
 import weChat from '../assets/images/weChat.jpg';
 
 const weChatStyle = {
-  marginLeft: '30%',
-  marginTop: '-60px',
+  marginLeft: 'calc(50% - 100px)',
   width: '200px',
 };
 

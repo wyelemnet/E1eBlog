@@ -22,11 +22,14 @@ const Container = styled.div`
 const ArticleDetail = () => {
   const history = useHistory();
   const { articleId } = useParams();
-  const articleContext = require.context('../../assets/md', true, /[0-9]\.md$/);
-  const articlePaths = articleContext.keys().map((item) => {
-    const path = articleContext(item).default;
-    return path;
-  });
+  const articleContext = require.context(
+    '../../assets/md',
+    false,
+    /[0-9]\.md$/,
+  );
+  const articlePaths = articleContext
+    .keys()
+    .map((item) => articleContext(item).default);
   const articlePath = articlePaths.find((item) =>
     item.includes(`article${articleId}`),
   );

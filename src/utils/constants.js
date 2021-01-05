@@ -55,6 +55,10 @@ export const CATEGORY_COLORS = [
     color: 'purple',
   },
   {
+    category: 'React',
+    color: '#61dafb',
+  },
+  {
     category: '',
     color: 'default',
   },
@@ -159,6 +163,13 @@ export const ARTICLES_INFO = [
     desc: 'three.js读取服务器上的模型文件流并加载模型',
     category: 'three.js',
     createTime: '2020-09-01',
+  },
+  {
+    id: 15,
+    title: 'React搭建博客',
+    desc: '使用React加GitHub-Pages搭建简单的私人博客',
+    category: 'React',
+    createTime: '2021-01-05',
   },
 ];
 
