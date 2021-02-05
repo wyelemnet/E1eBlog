@@ -4,9 +4,12 @@ export const typingAnimition = (container, text, index = 0) => {
     container.innerHTML += text.charAt(index);
     setTimeout(typingAnimition.bind(this, container, text, ++index), 300);
   } else {
-    container.innerHTML = '';
-    index = 0;
-    typingAnimition(container, text, index);
+    // 最后一个字停止500ms后重新开始
+    setTimeout(() => {
+      container.innerHTML = '';
+      index = 0;
+      typingAnimition(container, text, index);
+    }, 500);
   }
 };
 
