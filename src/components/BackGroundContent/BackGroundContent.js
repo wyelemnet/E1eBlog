@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import './BackGroundContent.less';
 
-import { typingAnimition } from '../../utils/index';
+import { typingAnimation } from '../../utils/index';
 import { SENTENCES } from '../../utils/constants';
 
 const BackGroundContent = () => {
@@ -10,7 +10,7 @@ const BackGroundContent = () => {
   
   useEffect(() => {
     const sentenceElement = document.getElementById('sentence');
-    typingAnimition(sentenceElement, sentence.text);
+    typingAnimation(sentenceElement, sentence.text);
 
     return () => {
       const maxTimer = setTimeout({}, 0);

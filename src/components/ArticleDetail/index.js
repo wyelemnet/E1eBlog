@@ -17,6 +17,12 @@ const Container = styled.div`
       color: #1da57a;
     }
   }
+  ul {
+    li {
+      padding: 5px 0;
+      list-style: inside;
+    }
+  }
 `;
 
 const ArticleDetail = () => {
