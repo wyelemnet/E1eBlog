@@ -2,7 +2,7 @@ import React from 'react';
 
 import aboutMe from '../assets/md/aboutMe.md';
 import MarkdownCode from '../components/MarkdownCode';
-import weChat from '../assets/images/weChat.jpg';
+import weChat from '../assets/images/others/weChat.jpg';
 
 const weChatStyle = {
   marginLeft: 'calc(50% - 100px)',
