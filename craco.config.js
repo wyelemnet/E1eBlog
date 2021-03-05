@@ -12,6 +12,9 @@ module.exports = {
   },
   plugins: [
     {
+      plugin: require('craco-cesium')(),
+    },
+    {
       plugin: CracoLessPlugin,
       options: {
         lessLoaderOptions: {
