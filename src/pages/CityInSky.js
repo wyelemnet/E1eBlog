@@ -212,7 +212,7 @@ const CityInSky = () => {
         }, 1000);
       }
 
-      // 跳转车头
+      // 调转车头
       if (object.position.x <= -95) {
         isBack = true;
         object.rotation.set(0, (Math.PI * 3) / 2, 0);
@@ -309,9 +309,18 @@ const CityInSky = () => {
     }
   };
 
-  const loadGltfModel = (loader, url, objectOptions, objName, callback) => {
-    loader.load(url, (gltf) => {
-      const model = gltf.scene;
+  /**
+   *
+   * @param {Object} loader Three.js的加载器
+   * @param {String} url 模型路径
+   * @param {Object} objectOptions 模型需要调整的属性
+   * @param {String} modelName 模型名称
+   * @param {Function} callback 回调函数
+   */
+  const loadModel = (loader, url, objectOptions, modelName, callback) => {
+    loader.load(url, (object) => {
+      // 获取模型，gltf需取object.scene，fbx直接取object
+      const model = object.scene || object;
 
       model.traverse((child) => {
         if (child.isMesh) {
@@ -324,13 +333,14 @@ const CityInSky = () => {
         model[key].set(...objectOptions[key]);
       });
 
-      if (gltf.animations.length > 0) {
+      if (object.animations.length > 0) {
         const mixer = new THREE.AnimationMixer(model);
+        // 士兵有多个动画，使用第二个-RUN
         const action = mixer.clipAction(
-          gltf.animations[1] ? gltf.animations[1] : gltf.animations[0],
+          object.animations[1] ? object.animations[1] : object.animations[0],
         );
 
-        mixer.type = objName;
+        mixer.type = modelName;
 
         action.play();
         mixers.push(mixer);
@@ -342,40 +352,13 @@ const CityInSky = () => {
     });
   };
 
-  const loadFbxModel = (loader, url, objectOptions, callback) => {
-    // 加载建筑模型
-    loader.load(url, (object) => {
-      object.traverse((child) => {
-        if (child.isMesh) {
-          child.castShadow = true;
-          child.receiveShadow = true;
-        }
-      });
-      Object.keys(objectOptions).forEach((key) => {
-        object[key].set(...objectOptions[key]);
-      });
-
-      if (object.animations.length > 0) {
-        const mixer = new THREE.AnimationMixer(object);
-        const action = mixer.clipAction(object.animations[0]);
-
-        action.play();
-        mixers.push(mixer);
-      }
-
-      scene.add(object);
-
-      callback && callback(object);
-    });
-  };
-
   const init = () => {
     const threeContainer = document.getElementById('three');
 
     scene = new THREE.Scene();
 
-    const axesHelper = new THREE.AxesHelper(500);
-    scene.add(axesHelper);
+    // const axesHelper = new THREE.AxesHelper(500);
+    // scene.add(axesHelper);
 
     camera = new THREE.PerspectiveCamera(
       90,
@@ -435,34 +418,37 @@ const CityInSky = () => {
 
     const fbxLoader = new FBXLoader();
     const gltfLoader = new GLTFLoader();
-    loadFbxModel(
+    loadModel(
       fbxLoader,
       buildingsPath,
       {
         position: [50, 0, 50],
       },
+      'buildings',
       () => {
-        loadFbxModel(
+        loadModel(
           fbxLoader,
           carPath01,
           {
             scale: [3, 3, 3],
             position: [52.5, 0, 195],
           },
+          'car01',
           moveCarOne,
         );
 
-        loadFbxModel(
+        loadModel(
           fbxLoader,
           carPath02,
           {
             scale: [3, 3, 3],
             position: [47.5, 0, -95],
           },
+          'car02',
           moveCarOne,
         );
 
-        loadFbxModel(
+        loadModel(
           fbxLoader,
           carPath03,
           {
@@ -470,6 +456,7 @@ const CityInSky = () => {
             position: [195, 0, 52.5],
             rotation: [0, Math.PI / 2, 0],
           },
+          'car03',
           (object) => {
             const isBack = false;
             const isPause = false;
@@ -484,7 +471,7 @@ const CityInSky = () => {
         );
 
         for (let i = 0; i < 10; i++) {
-          loadGltfModel(
+          loadModel(
             gltfLoader,
             SoldierPath,
             {
@@ -496,7 +483,7 @@ const CityInSky = () => {
           );
         }
 
-        loadGltfModel(
+        loadModel(
           gltfLoader,
           manPath,
           {
@@ -508,7 +495,7 @@ const CityInSky = () => {
           manMove,
         );
 
-        loadGltfModel(
+        loadModel(
           gltfLoader,
           dronePath,
           {
@@ -551,8 +538,6 @@ const CityInSky = () => {
 
     renderer.setSize(window.innerWidth, window.innerHeight);
   };
-
-  //
 
   const animate = () => {
     requestAnimationFrame(animate);
