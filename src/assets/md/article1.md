@@ -1,7 +1,7 @@
 ## js中判断数据类型方法
 
 - typeof
-- instanceof(for )
+- instanceof
 - constructor(for string|number|boolean|symbol|bigint|object|array|function|symbol)
 - toString()(for all)
 
@@ -18,7 +18,7 @@
 
 ### [instanceof](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/instanceof) => 用于检测构造函数的 prototype 属性是否出现在某个实例对象的原型链上
 
-**使用**: `[] instanceof Array => true`
+**使用**: `[] instanceof Array => true`<br>
 **注意**: 可用于判断是否为`array|function`
 
 ---
@@ -35,7 +35,7 @@
 
 ### [Object.prototype.toString.call()](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/toString) => 返回一个表示该对象的字符串
 
-**使用**: `Object.prototype.toString.call(1) => '[object Number]'`
+**使用**: `Object.prototype.toString.call(1) => '[object Number]'`<br>
 **注意**: <br>
 
 - slice 返回的字符串`Object.prototype.toString.call(1).slice(8, -1) => 'Number'`,根据 slice 得到的字符串进行判断
