@@ -35,7 +35,8 @@ const Container = styled.div`
     -ms-user-select: none;
     user-select: none;
     pointer-events: none;
-    z-index: 1; /* TODO Solve this in HTML */
+    z-index: 1;
+    color: #fff;
   }
 
   #mask {
@@ -587,8 +588,10 @@ const CityInSky = () => {
   };
 
   useEffect(() => {
-    init();
-    animate();
+    if (loading) {
+      init();
+      animate();
+    }
   });
 
   return (

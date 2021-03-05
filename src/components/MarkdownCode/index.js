@@ -15,6 +15,7 @@ const Container = styled.div`
   h5,
   h6 {
     margin-top: 10px;
+    font-weight: 600;
   }
 
   code {
